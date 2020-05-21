@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+  ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0 !important;
+    list-style-type: none;
+    margin-bottom: 0 !important;
+    padding: 0;
+    margin: 0;
+}
+.file-choose {
+    cursor: pointer;
+    font-size: 16px;
+    height: 100%;
+    padding: 10px 14px;
+    background-color: #00999a;
+    color: #fff;
+}
+.noneI, 
+.input-default {
+    display: none;
+}
+.input-default {
+    padding-left: 14px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    display: flex;
+}
+.cont{
+      margin: 40px 40px;
+}
+
+.list {
+    background-color: bisque;
+    padding: 7px 14px;
+    margin-bottom: 10px;
+    width: 100%;
+    animation: boxes 0.6s;
+}
+
+@keyframes boxes {
+    0% {
+        transform: scaleX(0);
+        opacity: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+  <div class="cont">
+      <div class="input-default">
+        <span class="drop-file-icon">
+          Upload your files
+        </span>
+        <span class="file-choose">
+          Choose file
+        </span>
+        <span class="noneI">
+          <input class="input-file" type="file" accept=".pdf,.jpeg,.png">
+        </span>
+      </div>
+      <ul class="fileN"></ul>
+  </div>
+ 
+ 
+ <script>
+     // Put code here
+// For uploading file
+    var clickFile = document.querySelector(".file-choose");
+    var inputFile = document.querySelector(".input-file");
+    console.log("Input file: ", inputFile);
+    clickFile.addEventListener("click", function(event) {
+        console.log("event ", event);
+        console.log("File: ", inputFile);
+        inputFile.click();
+      // alert("clicked");
+    });
+    inputFile.addEventListener("change", function() {
+        if (inputFile.value) {
+            var ul = document.querySelector(".fileN")
+            ul.style.paddingTop = "20px";
+            var li = document.createElement("li");
+            var valueCont = document.createElement("span");
+            var img = document.createElement("img");
+            var imgCont = document.createElement("span");
+            // img.src = "../images & Icons/cross.svg"
+            var values = document.createTextNode(inputFile.value.substring(12));
+            ul.append(li);
+            li.append(valueCont, imgCont);
+            imgCont.append(values, img);
+            valueCont.append(values);
+            li.setAttribute("class", "list")
+            imgCont.setAttribute("class", "removeSearch")
+            valueCont.setAttribute("class", "values")
+            input.value = null;
+            imgCont.addEventListener("click", function() {
+                this.parentNode.remove();
+                if (!ul.hasChildNodes()) {
+                    ul.style.paddingTop = "0px";
+                } else {
+
+                }
+            })
+        }
+    });
+    // For uploading file (End)
+ </script>
+</body>
+
+</html>
